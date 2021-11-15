@@ -25,7 +25,7 @@ class SqliteDriver {
 
   async listTable(table) {
     const cnn = this.cnn || (await this.getConnection())
-    return await cnn(table)
+    return await cnn(table).orderBy('id', 'desc')
   }
 }
 
