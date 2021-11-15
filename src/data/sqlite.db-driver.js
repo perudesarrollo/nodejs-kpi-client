@@ -1,13 +1,15 @@
+const path = require('path')
 class SqliteDriver {
   constructor() {
     this.cnn = false
   }
 
   getConnection() {
+    console.log(__dirname)
     const cnn = require('knex')({
       client: 'sqlite3',
       connection: {
-        filename: './mydb.sqlite',
+        filename: path.join(__dirname, '../..', 'clients.sqlite3'),
       },
       useNullAsDefault: true,
       debug: true,
