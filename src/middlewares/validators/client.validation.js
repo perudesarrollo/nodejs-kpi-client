@@ -3,7 +3,7 @@ module.exports = (Joi) => ({
     const schema = Joi.object({
       name: Joi.string().min(3).max(30).required(),
       last_name: Joi.string().min(3).max(30).required(),
-      birth_date: Joi.date().format('YYYY-MM-DD').required(),
+      birth_date: Joi.date().format('YYYY-MM-DD').min('01-01-1940').max('now').required(),
     })
     return await validate(schema, payload)
   },
