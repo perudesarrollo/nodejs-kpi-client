@@ -1,0 +1,123 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Kpi-Cliente
+  description: KPI de Clientes
+  contact: {}
+host: stormy-peak-78483.herokuapp.com
+basePath: /
+securityDefinitions: {}
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /cliente:
+    post:
+      summary: Cliente - Registrar
+      tags:
+        - Misc
+      operationId: Cliente-Registrar
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/Cliente-RegistrarRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    get:
+      description: >-
+        Respuesta:
+        ```
+        {
+            "status": true,
+            "message": "success",
+            "payload": {
+                "clients": [
+                    {
+                        "id": 6,
+                        "name": "Demo",
+                        "last_name": "Palomino2",
+                        "birth_date": "1990-01-14",
+                        "created_at": null,
+                        "updated_at": null,
+                        "age": 31,
+                        "death": 2065
+                    },
+                  ]
+           }
+        }
+
+        ```
+      summary: Cliente - Listar
+      tags:
+        - Misc
+      operationId: Cliente-Listar
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /cliente/kpi:
+    get:
+      description: >-
+        Respuesta:
+        ```
+        {
+            "status": true,
+            "message": "success",
+            "payload": {
+                "kpi": {
+                    "average_age": 12.166666666666666,
+                    "standard_deviation": 9.261029460414575
+                }
+            }
+        }
+
+        ```
+      summary: Cliente - KPI
+      tags:
+        - Misc
+      operationId: Cliente-KPI
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+definitions:
+  Cliente-RegistrarRequest:
+    title: Cliente-RegistrarRequest
+    example:
+      name: Demo
+      last_name: Palomino2
+      birth_date: 1990-01-14
+    type: object
+    properties:
+      name:
+        type: string
+      last_name:
+        type: string
+      birth_date:
+        type: string
+    required:
+      - name
+      - last_name
+      - birth_date
+tags:
+  - name: Misc
+    description: ''
